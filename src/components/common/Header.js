@@ -11,7 +11,7 @@ const Header = () => {
     <header className="header">
       <div className="container header-container">
         <Link to="/" className="logo">
-          BecomeUSCitizen
+          Stars and Rights
         </Link>
         <nav className="nav">
           <NavLink to="/study" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>

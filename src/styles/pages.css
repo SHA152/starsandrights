@@ -2,7 +2,7 @@
 
 /* Home Page */
 .home-page {
-  padding-bottom: var(--spacing-xxl);
+  padding-bottom: var(--spacing-xl);
 }
 
 .hero {
@@ -32,6 +32,30 @@
   gap: var(--spacing-md);
   justify-content: center;
   margin-top: var(--spacing-lg);
+}
+
+.creator-intro {
+  background-color: white;
+  padding: var(--spacing-xl) 0;
+  margin-bottom: var(--spacing-xl);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.creator-intro h2 {
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+  color: var(--color-primary);
+}
+
+.creator-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.creator-text p {
+  margin-bottom: var(--spacing-md);
+  line-height: 1.6;
 }
 
 .btn {

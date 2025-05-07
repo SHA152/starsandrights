@@ -13,7 +13,7 @@ const Footer = () => {
       <div className="container">
         <div className="footer-content">
           <div className="footer-section">
-            <h3>BecomeUSCitizen</h3>
+            <h3>Stars and Rights</h3>
             <p>A study tool for the U.S. citizenship naturalization test.</p>
           </div>
           <div className="footer-section">
@@ -58,7 +58,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="footer-bottom">
-          <p>&copy; {currentYear} BecomeUSCitizen. All rights reserved.</p>
+          <p>&copy; {currentYear} Stars and Rights. All rights reserved.</p>
         </div>
       </div>
     </footer>
