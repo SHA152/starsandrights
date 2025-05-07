@@ -20,28 +20,6 @@ const HomePage = () => {
         </div>
       </section>
 
-      <section className="creator-intro">
-        <div className="container">
-          <h2>About the Creator</h2>
-          <div className="creator-content">
-            <div className="creator-text">
-              <p>
-                Hello! I'm Shakil Ahmad, the creator of Stars and Rights. As someone who has gone through the citizenship process,
-                I understand the challenges of preparing for the naturalization test.
-              </p>
-              <p>
-                I built this application to help others on their journey to becoming U.S. citizens. The app provides a structured
-                way to study the official civics questions and English materials required for the test.
-              </p>
-              <p>
-                My goal is to make the preparation process easier and more accessible for everyone. I hope this tool helps you
-                achieve your dream of U.S. citizenship!
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section className="features">
         <h2>Study Tools</h2>
         <div className="feature-grid">

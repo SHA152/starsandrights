@@ -11,6 +11,7 @@ import CategoryStudyPage from './pages/CategoryStudyPage';
 import FlashcardsPage from './pages/FlashcardsPage';
 import PracticeTestPage from './pages/PracticeTestPage';
 import EnglishPage from './pages/EnglishPage';
+import AboutCreatorPage from './pages/AboutCreatorPage';
 import NotFoundPage from './pages/NotFoundPage';
 import AdminPage from './pages/AdminPage';
 
@@ -28,6 +29,7 @@ function App() {
         <Route path="/flashcards" element={<Layout><FlashcardsPage /></Layout>} />
         <Route path="/practice" element={<Layout><PracticeTestPage /></Layout>} />
         <Route path="/english" element={<Layout><EnglishPage /></Layout>} />
+        <Route path="/about" element={<Layout><AboutCreatorPage /></Layout>} />
         <Route path="/admin" element={<AdminPage />} />
         <Route path="*" element={<Layout><NotFoundPage /></Layout>} />
       </Routes>

@@ -26,6 +26,9 @@ const Header = () => {
           <NavLink to="/english" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
             English
           </NavLink>
+          <NavLink to="/about" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
+            About the Creator
+          </NavLink>
         </nav>
       </div>
     </header>
