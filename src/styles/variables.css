@@ -1,0 +1,41 @@
+:root {
+  /* Color Scheme */
+  --color-primary: #1A365D;      /* Deep Navy Blue - Headers, primary buttons */
+  --color-accent: #D64045;       /* Vibrant Red - Highlights, important elements */
+  --color-background: #FFFFFF;   /* Clean White - Main backgrounds */
+  --color-secondary-light: #E1F1FF; /* Light Blue - Card backgrounds */
+  --color-secondary-gold: #FFD24C;  /* Gold/Yellow - Achievements, important info */
+  --color-secondary-gray: #F5F7FA; /* Soft Gray - Subtle backgrounds, dividers */
+  
+  /* Typography */
+  --font-heading: 'Montserrat', sans-serif;
+  --font-body: 'Open Sans', 'Roboto', sans-serif;
+  --font-size-base: 16px;
+  --font-size-small: 14px;
+  --font-size-large: 18px;
+  --font-size-xl: 24px;
+  --font-size-xxl: 32px;
+  
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-xxl: 48px;
+  
+  /* Border Radius */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  
+  /* Transitions */
+  --transition-fast: 150ms ease-in-out;
+  --transition-normal: 300ms ease-in-out;
+  --transition-slow: 500ms ease-in-out;
+}
