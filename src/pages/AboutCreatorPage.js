@@ -22,12 +22,16 @@ const AboutCreatorPage = () => {
               
               <div className="creator-description">
                 <p>
-                  I'm Shakil Ahmad, the creator of Stars and Rights. Having gone through the citizenship process myself,
-                  I built this application to help others on their journey to becoming U.S. citizens.
+                Hi! I’m Shakil—a happy family man, former test-taker turned test-maker, and your friendly guide through the maze of U.S. civics questions. 
+                I built this application to help others on their journey to becoming U.S. citizens.
+
+                That smiling trio in the photo? That’s me, my brilliant wife, and our little giggle machine (aka our son), planting love and chaos wherever we go. 
+                We believe in naps, laughter, and that the best way to teach is to enjoy the process—even if it involves memorizing how many voting members are in Congress (it’s 535, in case your brain just did a somersault).
                 </p>
                 <p>
-                  My goal is to make the preparation process easier and more accessible for everyone.
-                  I hope this tool helps you achieve your dream of U.S. citizenship!
+                I built this app because I wanted the citizenship journey to feel a little more like a family picnic and a little less like a DMV line. Simple, friendly, no pressure—and maybe even a chuckle or two along the way.
+                So if you’re prepping to become a citizen, know this: you’ve got a Bangladeshi-American dad cheering you on—rooting for your success, one flashcard at a time.
+                Let’s do this. 🇺🇸✨
                 </p>
               </div>
               
@@ -36,10 +40,10 @@ const AboutCreatorPage = () => {
                 <p>I'd love to hear about your citizenship journey or answer any questions you might have.</p>
                 
                 <div className="connect-links">
-                  <a href="https://yourwebsite.com" target="_blank" rel="noopener noreferrer" className="connect-link">
+                  <a href="https://www.shakilahmad.org/" target="_blank" rel="noopener noreferrer" className="connect-link">
                     Visit My Website
                   </a>
-                  <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" className="connect-link">
+                  <a href="https://linkedin.com/in/shakil-fulbrighter" target="_blank" rel="noopener noreferrer" className="connect-link">
                     Connect on LinkedIn
                   </a>
                 </div>
