@@ -20,7 +20,9 @@
 ### Styling Approach
 - **CSS Modules**: For component-scoped styling
 - **CSS Variables**: For consistent theming and design tokens
+- **American Flag Color Scheme**: Using official flag colors (blue: #3C3B6E, red: #B22234, white: #FFFFFF)
 - **Responsive Design**: Using media queries for different screen sizes
+- **Fixed Header**: Navigation that stays at the top when scrolling
 - **Animation System**: CSS-based animations with React integration
 
 ### Animation Technologies

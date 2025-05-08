@@ -62,6 +62,7 @@ graph TD
 4. **Responsive Design Pattern**
    - Mobile-first approach with media queries
    - Hamburger menu for mobile navigation
+   - Fixed header that stays at the top when scrolling
    - Flexible layouts that adapt to different screen sizes
    - Consistent spacing and typography across devices
 
