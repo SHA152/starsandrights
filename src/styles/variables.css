@@ -1,9 +1,9 @@
 :root {
-  /* Color Scheme */
-  --color-primary: #1A365D;      /* Deep Navy Blue - Headers, primary buttons */
-  --color-accent: #D64045;       /* Vibrant Red - Highlights, important elements */
-  --color-background: #FFFFFF;   /* Clean White - Main backgrounds */
-  --color-secondary-light: #E1F1FF; /* Light Blue - Card backgrounds */
+  /* American Flag Color Scheme */
+  --color-primary: #3C3B6E;      /* American Flag Blue - Headers, primary buttons */
+  --color-accent: #B22234;       /* American Flag Red - Highlights, important elements */
+  --color-background: #FFFFFF;   /* American Flag White - Main backgrounds */
+  --color-secondary-light: #E8EBF7; /* Light Blue (derived from flag blue) - Card backgrounds */
   --color-secondary-gold: #FFD24C;  /* Gold/Yellow - Achievements, important info */
   --color-secondary-gray: #F5F7FA; /* Soft Gray - Subtle backgrounds, dividers */
   

@@ -6,6 +6,11 @@
   color: white;
   padding: var(--spacing-md) 0;
   box-shadow: var(--shadow-md);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
 .header-container {

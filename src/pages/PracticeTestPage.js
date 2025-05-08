@@ -62,7 +62,7 @@ const PracticeTestPage = () => {
   
   const renderTestSelection = () => (
     <div className="test-selection">
-      <h2>Select Test Type</h2>
+      <h2 className="test-selection-header">Select Test Type</h2>
       <div className="test-options stagger-container visible">
         <div className="option-card hover-lift stagger-item-1" onClick={() => handleStartTest('standard')}>
           <h3>Standard Test</h3>

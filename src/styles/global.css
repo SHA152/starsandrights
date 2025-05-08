@@ -143,6 +143,7 @@ button.accent:hover {
   padding: var(--spacing-lg) 0;
   position: relative;
   min-height: 70vh;
+  margin-top: 70px; /* Add margin to account for fixed header */
 }
 
 /* Animation Helper Classes */

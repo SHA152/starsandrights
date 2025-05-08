@@ -24,6 +24,9 @@ const FlashcardsPage = () => {
       filteredQuestions = getAllQuestions();
     } else if (categoryFilter === 'senior') {
       filteredQuestions = getQuestionsFor65Plus();
+    } else if (categoryFilter === 'current-officials') {
+      // For current officials, we need to get questions from officialQuestions that need regular updates
+      filteredQuestions = getAllQuestions().filter(q => q.needsRegularUpdate === true);
     } else {
       filteredQuestions = getQuestionsByCategory(categoryFilter);
     }
