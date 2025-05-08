@@ -22,19 +22,17 @@ const AboutCreatorPage = () => {
               
               <div className="creator-description">
                 <p>
-                Hi! I’m Shakil—a happy family man, former test-taker turned test-maker, and your friendly guide through the maze of U.S. civics questions. 
-                I built this application to help others on their journey to becoming U.S. citizens.
+                Hi! I’m Shakil—a happy family man, and your friendly guide through the maze of U.S. civics questions. 
                 </p>
                 <p>
                 That smiling trio in the photo? That’s me, my brilliant wife, and our little giggle machine (aka our son), planting love and chaos wherever we go. 
-                We believe in naps, laughter, and that the best way to teach is to enjoy the process—even if it involves memorizing how many voting members are in Congress (it’s 535, in case your brain just did a somersault).
                 </p>
                 <p>
                 I built this app because I wanted the citizenship journey to feel a little more like a family picnic and a little less like a DMV line. Simple, friendly, no pressure—and maybe even a chuckle or two along the way.
                 </p>
                 <p>
                 So if you’re prepping to become a citizen, know this: you’ve got a Bangladeshi-American dad cheering you on—rooting for your success, one flashcard at a time.
-                Let’s do this. 🇺🇸✨
+                Let’s do this.
                 </p>
               </div>
               
