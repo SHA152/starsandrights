@@ -61,6 +61,11 @@ We have completed the initial implementation of the BecomeUSCitizen app and have
   - Modified content boxes in Test Structure and N-400 Guide pages to take full width on desktop screens
   - Added ScrollReveal components to Study, English, and About Creator pages for consistent animations
   - Updated the color scheme to use official American flag colors (blue: #3C3B6E, red: #B22234, white: #FFFFFF)
+- Added custom branding:
+  - Integrated custom SVG logo in the header alongside the app name
+  - Updated favicon with custom design
+  - Created and added app icons (192x192 and 512x512) for the manifest
+  - Updated manifest.json with proper app name and theme color
 
 ## Testing Results
 
