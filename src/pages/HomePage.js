@@ -87,7 +87,7 @@ const HomePage = () => {
             <h3>65/20 Special Consideration</h3>
             <p>
               If you are 65 or older and have been a permanent resident for at least 20 years, you may study 
-              just the questions marked with an asterisk.
+              just <Link to="/study/senior" className="info-link">these special questions</Link>.
             </p>
           </div>
         </div>

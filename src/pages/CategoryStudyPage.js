@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { 
   getQuestionsByCategory, 
+  getQuestionsBySubcategory,
   getQuestionsFor65Plus, 
   getCommonlyMissedQuestions 
 } from '../data/civicsQuestions';
@@ -31,7 +32,7 @@ const CategoryStudyPage = () => {
       fetchedQuestions = getCommonlyMissedQuestions();
       name = 'Commonly Missed Questions';
       description = 'Questions that applicants frequently answer incorrectly on the citizenship test.';
-    } else if (categoryId === 'officials') {
+    } else if (categoryId === 'officials' || categoryId === 'current-officials') {
       // For officials, we need to filter questions about officials
       fetchedQuestions = getQuestionsByCategory('american-government').filter(q => 
         q.question.toLowerCase().includes('president') || 
@@ -54,7 +55,7 @@ const CategoryStudyPage = () => {
         const allSubcategories = getAllSubcategories();
         const subcategory = allSubcategories.find(subcat => subcat.id === categoryId);
         if (subcategory) {
-          fetchedQuestions = getQuestionsByCategory(categoryId);
+          fetchedQuestions = getQuestionsBySubcategory(categoryId);
           name = subcategory.name;
           description = subcategory.description;
         }
