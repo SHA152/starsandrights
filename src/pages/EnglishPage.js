@@ -57,7 +57,7 @@ const EnglishPage = () => {
     <div className="english-page">
       <ScrollReveal>
         <div className="english-header">
-          <h1>English Materials</h1>
+          <h1>English Study</h1>
           <p>Study the English reading and writing materials for the citizenship test</p>
         </div>
       </ScrollReveal>

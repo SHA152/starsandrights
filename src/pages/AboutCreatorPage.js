@@ -11,7 +11,7 @@ const AboutCreatorPage = () => {
       <div className="about-container">
         <div className="about-content">
           <ScrollReveal>
-            <h1>About the Creator</h1>
+            <h1>About</h1>
           </ScrollReveal>
           
           <ScrollReveal>
