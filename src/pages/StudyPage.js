@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { categories, getAllSubcategories } from '../data/questionCategories';
-import { getQuestionsByCategory, getQuestionsFor65Plus, getCommonlyMissedQuestions } from '../data/civicsQuestions';
+import { getQuestionsByCategory, getQuestionsBySubcategory, getQuestionsFor65Plus, getCommonlyMissedQuestions } from '../data/civicsQuestions';
 
 /**
  * Study page component
@@ -75,15 +75,64 @@ const StudyPage = () => {
         <div className="categories-grid">
           {categories.map(category => {
             // Get question count based on filters
-            let questionCount = getQuestionsByCategory(category.id).length;
-            if (showSeniorQuestions) {
-              questionCount = getQuestionsByCategory(category.id).filter(q => q.is65Plus).length;
-            }
-            if (showCommonlyMissed) {
-              questionCount = getQuestionsByCategory(category.id).filter(q => q.commonlyMissed).length;
-            }
-            if (activeDifficulty !== 'all') {
-              questionCount = getQuestionsByCategory(category.id).filter(q => q.difficulty === activeDifficulty).length;
+            let questionCount;
+            
+            // Special case for current-officials category
+            if (category.id === 'current-officials') {
+              questionCount = getQuestionsByCategory('american-government').filter(q => 
+                q.question.toLowerCase().includes('president') || 
+                q.question.toLowerCase().includes('vice president') || 
+                q.question.toLowerCase().includes('speaker') ||
+                q.question.toLowerCase().includes('chief justice') ||
+                q.question.toLowerCase().includes('governor')
+              ).length;
+              
+              // Apply filters to officials questions
+              if (showSeniorQuestions) {
+                questionCount = getQuestionsByCategory('american-government')
+                  .filter(q => 
+                    (q.question.toLowerCase().includes('president') || 
+                    q.question.toLowerCase().includes('vice president') || 
+                    q.question.toLowerCase().includes('speaker') ||
+                    q.question.toLowerCase().includes('chief justice') ||
+                    q.question.toLowerCase().includes('governor')) && 
+                    q.is65Plus
+                  ).length;
+              }
+              if (showCommonlyMissed) {
+                questionCount = getQuestionsByCategory('american-government')
+                  .filter(q => 
+                    (q.question.toLowerCase().includes('president') || 
+                    q.question.toLowerCase().includes('vice president') || 
+                    q.question.toLowerCase().includes('speaker') ||
+                    q.question.toLowerCase().includes('chief justice') ||
+                    q.question.toLowerCase().includes('governor')) && 
+                    q.commonlyMissed
+                  ).length;
+              }
+              if (activeDifficulty !== 'all') {
+                questionCount = getQuestionsByCategory('american-government')
+                  .filter(q => 
+                    (q.question.toLowerCase().includes('president') || 
+                    q.question.toLowerCase().includes('vice president') || 
+                    q.question.toLowerCase().includes('speaker') ||
+                    q.question.toLowerCase().includes('chief justice') ||
+                    q.question.toLowerCase().includes('governor')) && 
+                    q.difficulty === activeDifficulty
+                  ).length;
+              }
+            } else {
+              // Normal case for other categories
+              questionCount = getQuestionsByCategory(category.id).length;
+              if (showSeniorQuestions) {
+                questionCount = getQuestionsByCategory(category.id).filter(q => q.is65Plus).length;
+              }
+              if (showCommonlyMissed) {
+                questionCount = getQuestionsByCategory(category.id).filter(q => q.commonlyMissed).length;
+              }
+              if (activeDifficulty !== 'all') {
+                questionCount = getQuestionsByCategory(category.id).filter(q => q.difficulty === activeDifficulty).length;
+              }
             }
             
             return (
@@ -106,15 +155,15 @@ const StudyPage = () => {
         <div className="categories-grid">
           {subcategories.map(subcategory => {
             // Get question count based on filters
-            let questionCount = getQuestionsByCategory(subcategory.id).length;
+            let questionCount = getQuestionsBySubcategory(subcategory.id).length;
             if (showSeniorQuestions) {
-              questionCount = getQuestionsByCategory(subcategory.id).filter(q => q.is65Plus).length;
+              questionCount = getQuestionsBySubcategory(subcategory.id).filter(q => q.is65Plus).length;
             }
             if (showCommonlyMissed) {
-              questionCount = getQuestionsByCategory(subcategory.id).filter(q => q.commonlyMissed).length;
+              questionCount = getQuestionsBySubcategory(subcategory.id).filter(q => q.commonlyMissed).length;
             }
             if (activeDifficulty !== 'all') {
-              questionCount = getQuestionsByCategory(subcategory.id).filter(q => q.difficulty === activeDifficulty).length;
+              questionCount = getQuestionsBySubcategory(subcategory.id).filter(q => q.difficulty === activeDifficulty).length;
             }
             
             return (
@@ -162,7 +211,15 @@ const StudyPage = () => {
             <p className="category-description">
               Questions about current government officials that may change over time.
             </p>
-            <p className="category-count">6 questions</p>
+            <p className="category-count">
+              {getQuestionsByCategory('american-government').filter(q => 
+                q.question.toLowerCase().includes('president') || 
+                q.question.toLowerCase().includes('vice president') || 
+                q.question.toLowerCase().includes('speaker') ||
+                q.question.toLowerCase().includes('chief justice') ||
+                q.question.toLowerCase().includes('governor')
+              ).length} questions
+            </p>
             <Link to="/study/officials" className="btn primary">
               Study These Questions
             </Link>

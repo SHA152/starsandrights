@@ -81,6 +81,35 @@ const EnglishPage = () => {
       </div>
       
       <div className="english-content">
+        <div className="english-section">
+          <h2>Tips for the English {activeTab === 'reading' ? 'Reading' : 'Writing'} Test</h2>
+          {activeTab === 'reading' ? (
+            <div className="tips-content">
+              <p>During the reading test, you will be asked to read one sentence out of three sentences. You need to read just one sentence correctly to demonstrate your ability to read English.</p>
+              <h3>Reading Test Tips:</h3>
+              <ul>
+                <li>Practice reading the vocabulary words and sentences out loud</li>
+                <li>Focus on pronunciation and fluency</li>
+                <li>Don't worry about your accent as long as your reading is understandable</li>
+                <li>Take your time - there is no time limit for this portion of the test</li>
+                <li>If you don't understand a word, ask the officer to repeat it</li>
+              </ul>
+            </div>
+          ) : (
+            <div className="tips-content">
+              <p>During the writing test, you will be asked to write one sentence out of three sentences. You need to write just one sentence correctly to demonstrate your ability to write English.</p>
+              <h3>Writing Test Tips:</h3>
+              <ul>
+                <li>Practice writing the vocabulary words and sentences by hand</li>
+                <li>Focus on spelling, capitalization, and basic punctuation</li>
+                <li>Write clearly and legibly</li>
+                <li>Take your time - there is no time limit for this portion of the test</li>
+                <li>If you don't understand a word, ask the officer to repeat it</li>
+              </ul>
+            </div>
+          )}
+        </div>
+        
         <div className="filter-group">
           <h3>Categories</h3>
           <div className="category-tabs">
@@ -124,35 +153,6 @@ const EnglishPage = () => {
               </div>
             ))}
           </div>
-        </div>
-        
-        <div className="english-section">
-          <h2>Tips for the English {activeTab === 'reading' ? 'Reading' : 'Writing'} Test</h2>
-          {activeTab === 'reading' ? (
-            <div className="tips-content">
-              <p>During the reading test, you will be asked to read one sentence out of three sentences. You need to read just one sentence correctly to demonstrate your ability to read English.</p>
-              <h3>Reading Test Tips:</h3>
-              <ul>
-                <li>Practice reading the vocabulary words and sentences out loud</li>
-                <li>Focus on pronunciation and fluency</li>
-                <li>Don't worry about your accent as long as your reading is understandable</li>
-                <li>Take your time - there is no time limit for this portion of the test</li>
-                <li>If you don't understand a word, ask the officer to repeat it</li>
-              </ul>
-            </div>
-          ) : (
-            <div className="tips-content">
-              <p>During the writing test, you will be asked to write one sentence out of three sentences. You need to write just one sentence correctly to demonstrate your ability to write English.</p>
-              <h3>Writing Test Tips:</h3>
-              <ul>
-                <li>Practice writing the vocabulary words and sentences by hand</li>
-                <li>Focus on spelling, capitalization, and basic punctuation</li>
-                <li>Write clearly and legibly</li>
-                <li>Take your time - there is no time limit for this portion of the test</li>
-                <li>If you don't understand a word, ask the officer to repeat it</li>
-              </ul>
-            </div>
-          )}
         </div>
       </div>
     </div>

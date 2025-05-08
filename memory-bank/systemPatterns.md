@@ -59,6 +59,19 @@ graph TD
    - Presentation components focus on rendering UI
    - Enhances reusability and testability
 
+4. **Responsive Design Pattern**
+   - Mobile-first approach with media queries
+   - Hamburger menu for mobile navigation
+   - Flexible layouts that adapt to different screen sizes
+   - Consistent spacing and typography across devices
+
+5. **Animation System Pattern**
+   - Centralized animation definitions in animations.css
+   - Component-specific animation implementations
+   - Reusable animation components (PageTransition, ScrollReveal)
+   - Performance-optimized animations using CSS transitions and transforms
+   - Intersection Observer for scroll-triggered animations
+
 ### State Management
 
 1. **React Hooks Pattern**

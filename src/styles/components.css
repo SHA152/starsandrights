@@ -26,6 +26,43 @@
   text-decoration: none;
 }
 
+/* Mobile Menu Button */
+.mobile-menu-button {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--spacing-sm);
+  z-index: 1000;
+}
+
+.hamburger-icon {
+  display: block;
+  position: relative;
+  width: 24px;
+  height: 2px;
+  background-color: white;
+  transition: background-color 0.3s;
+}
+
+.hamburger-icon::before,
+.hamburger-icon::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 2px;
+  background-color: white;
+  transition: transform 0.3s;
+}
+
+.hamburger-icon::before {
+  top: -8px;
+}
+
+.hamburger-icon::after {
+  top: 8px;
+}
+
 /* Navigation Component */
 .nav {
   display: flex;
@@ -47,6 +84,38 @@
 
 .nav-link.active {
   background-color: var(--color-accent);
+}
+
+/* Responsive Navigation */
+@media (max-width: 992px) {
+  .mobile-menu-button {
+    display: block;
+  }
+  
+  .nav {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 300px;
+    height: 100vh;
+    background-color: var(--color-primary);
+    flex-direction: column;
+    padding: 80px 20px 20px;
+    transition: right 0.3s ease;
+    z-index: 900;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+  }
+  
+  .nav.mobile-open {
+    right: 0;
+  }
+  
+  .nav-link {
+    padding: var(--spacing-md);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+  }
 }
 
 /* Card Components */

@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { getRandomQuestionsForTest, getQuestionsFor65Plus } from '../data/civicsQuestions';
+import ScrollReveal from '../components/common/ScrollReveal';
 
 /**
  * Practice Test page component
@@ -62,15 +63,15 @@ const PracticeTestPage = () => {
   const renderTestSelection = () => (
     <div className="test-selection">
       <h2>Select Test Type</h2>
-      <div className="test-options">
-        <div className="option-card" onClick={() => handleStartTest('standard')}>
+      <div className="test-options stagger-container visible">
+        <div className="option-card hover-lift stagger-item-1" onClick={() => handleStartTest('standard')}>
           <h3>Standard Test</h3>
           <p>10 random questions from the full set of 100 civics questions.</p>
           <p>You need to answer 6 out of 10 questions correctly to pass.</p>
           <button className="btn primary">Start Standard Test</button>
         </div>
         
-        <div className="option-card" onClick={() => handleStartTest('senior')}>
+        <div className="option-card hover-lift stagger-item-2" onClick={() => handleStartTest('senior')}>
           <h3>65/20 Special Test</h3>
           <p>10 random questions from the reduced set for applicants who are 65+ years old and have been a permanent resident for 20+ years.</p>
           <p>You need to answer 6 out of 10 questions correctly to pass.</p>
@@ -79,6 +80,25 @@ const PracticeTestPage = () => {
       </div>
     </div>
   );
+  
+  // Reference for question animation
+  const questionRef = useRef(null);
+  
+  // Add animation class when question changes
+  useEffect(() => {
+    if (questionRef.current) {
+      questionRef.current.classList.add('question-enter');
+      
+      // Remove the class after animation completes
+      const timer = setTimeout(() => {
+        if (questionRef.current) {
+          questionRef.current.classList.remove('question-enter');
+        }
+      }, 300);
+      
+      return () => clearTimeout(timer);
+    }
+  }, [currentIndex]);
   
   const renderQuestion = () => {
     // Check if questions array is empty or currentIndex is out of bounds
@@ -94,7 +114,7 @@ const PracticeTestPage = () => {
     const currentQuestion = questions[currentIndex];
 
     return (
-      <div className="practice-question">
+      <div className="practice-question" ref={questionRef}>
         <div className="test-progress">
           <span>Question {currentIndex + 1} of {questions.length}</span>
           <div className="progress-bar">
@@ -154,12 +174,12 @@ const PracticeTestPage = () => {
     const passed = score >= 6;
     
     return (
-      <div className="results-container">
+      <div className="results-container scale-in">
         <h2>Test Results</h2>
         
         <div className="results-score">
           {passed ? (
-            <div className="celebration">🎉</div>
+            <div className="celebration pulse">🎉</div>
           ) : null}
           <div>You scored {score} out of 10</div>
         </div>
@@ -172,15 +192,15 @@ const PracticeTestPage = () => {
           )}
         </div>
         
-        <div className="results-actions">
+        <div className="results-actions stagger-container visible">
           <button 
-            className="btn primary"
+            className="btn primary stagger-item-1 hover-lift"
             onClick={() => handleStartTest(testMode)}
           >
             Take Another {testMode === 'senior' ? '65/20' : 'Standard'} Test
           </button>
           <button 
-            className="btn secondary"
+            className="btn secondary stagger-item-2 hover-lift"
             onClick={handleRestartTest}
           >
             Return to Test Selection
@@ -192,14 +212,30 @@ const PracticeTestPage = () => {
   
   return (
     <div className="practice-page">
-      <div className="practice-header">
-        <h1>Practice Test</h1>
-        <p>Take a simulated citizenship test to gauge your readiness</p>
-      </div>
+      <ScrollReveal>
+        <div className="practice-header">
+          <h1>Practice Test</h1>
+          <p>Take a simulated citizenship test to gauge your readiness</p>
+        </div>
+      </ScrollReveal>
       
-      {testMode === null && renderTestSelection()}
-      {testMode !== null && !testComplete && renderQuestion()}
-      {testComplete && renderResults()}
+      {testMode === null && (
+        <ScrollReveal>
+          {renderTestSelection()}
+        </ScrollReveal>
+      )}
+      
+      {testMode !== null && !testComplete && (
+        <ScrollReveal>
+          {renderQuestion()}
+        </ScrollReveal>
+      )}
+      
+      {testComplete && (
+        <ScrollReveal>
+          {renderResults()}
+        </ScrollReveal>
+      )}
     </div>
   );
 };

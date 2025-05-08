@@ -21,6 +21,13 @@
 - **CSS Modules**: For component-scoped styling
 - **CSS Variables**: For consistent theming and design tokens
 - **Responsive Design**: Using media queries for different screen sizes
+- **Animation System**: CSS-based animations with React integration
+
+### Animation Technologies
+- **CSS Transitions & Transforms**: For performant, hardware-accelerated animations
+- **CSS Keyframes**: For more complex multi-step animations
+- **React Transition Group**: For coordinating component enter/exit animations
+- **Intersection Observer API**: For triggering animations when elements enter the viewport
 
 ## Development Environment
 
@@ -28,9 +35,20 @@
 ```
 src/
 ├── components/     # Reusable UI components
+│   └── common/     # Shared components used across the app
+│       ├── Layout.js            # Main layout wrapper
+│       ├── Header.js            # Navigation header
+│       ├── Footer.js            # Page footer
+│       ├── PageTransition.js    # Handles page transition animations
+│       └── ScrollReveal.js      # Handles scroll-triggered animations
 ├── data/           # Static data files
 ├── pages/          # Route-level components
 ├── styles/         # Global styles and variables
+│   ├── global.css              # Global styles
+│   ├── variables.css           # CSS variables for theming
+│   ├── components.css          # Component-specific styles
+│   ├── pages.css               # Page-specific styles
+│   └── animations.css          # Animation definitions and keyframes
 ├── utils/          # Utility functions
 ├── App.js          # Main application component
 └── index.js        # Application entry point
@@ -52,6 +70,10 @@ src/
 - Small bundle size due to limited application scope
 - No server-side rendering required
 - Static content allows for efficient caching
+- CSS-based animations leverage hardware acceleration
+- Intersection Observer API is more efficient than scroll event listeners
+- Animation timeouts are kept short (150-300ms) to maintain responsiveness
+- Animations are designed to be subtle and purposeful, not distracting
 
 ### Content Management
 - All content stored in static JavaScript/JSON files
@@ -78,6 +100,13 @@ src/
 - Simpler than CSS-in-JS solutions for this use case
 - Works well with Create React App without additional configuration
 
+### Why This Animation Approach?
+- CSS-based animations are more performant than JavaScript animations
+- React Transition Group provides a clean way to handle component mounting/unmounting animations
+- Intersection Observer is more efficient than scroll event listeners
+- Centralized animation definitions in animations.css promotes consistency
+- Reusable animation components (PageTransition, ScrollReveal) simplify implementation
+
 ## Dependency Management
 
 ### Core Dependencies
@@ -85,6 +114,7 @@ src/
 - react-dom
 - react-router-dom
 - react-scripts
+- react-transition-group: For managing component transitions and animations
 
 ### Development Dependencies
 - @testing-library/jest-dom
@@ -138,3 +168,12 @@ src/
 - Reusable and composable design
 - Clear prop interfaces
 - Proper error handling
+
+### Animation Guidelines
+- Animations should be subtle and purposeful, not distracting
+- Use CSS transitions for simple state changes
+- Use CSS keyframes for more complex animations
+- Keep animation durations short (150-300ms) for UI responsiveness
+- Use hardware-accelerated properties (transform, opacity) when possible
+- Provide fallbacks for users with reduced motion preferences
+- Stagger animations of related elements for a more polished feel

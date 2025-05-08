@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { getAllQuestions, getQuestionsByCategory, getQuestionsFor65Plus } from '../data/civicsQuestions';
 import { categories } from '../data/questionCategories';
+import ScrollReveal from '../components/common/ScrollReveal';
 
 /**
  * Flashcards page component
@@ -12,6 +13,8 @@ const FlashcardsPage = () => {
   const [isFlipped, setIsFlipped] = useState(false);
   const [categoryFilter, setCategoryFilter] = useState('all');
   const [showSeniorQuestions, setShowSeniorQuestions] = useState(false);
+  const [isCardReady, setIsCardReady] = useState(false);
+  const flashcardRef = useRef(null);
   
   // Load questions based on filters
   useEffect(() => {
@@ -36,6 +39,18 @@ const FlashcardsPage = () => {
     setCurrentIndex(0);
     setIsFlipped(false);
   }, [categoryFilter, showSeniorQuestions]);
+  
+  // Handle card ready animation
+  useEffect(() => {
+    if (questions.length > 0) {
+      setIsCardReady(false);
+      const timer = setTimeout(() => {
+        setIsCardReady(true);
+      }, 100);
+      
+      return () => clearTimeout(timer);
+    }
+  }, [currentIndex, questions]);
   
   const handleNext = () => {
     if (currentIndex < questions.length - 1) {
@@ -64,104 +79,118 @@ const FlashcardsPage = () => {
   
   return (
     <div className="flashcards-page">
-      <div className="flashcards-header">
-        <h1>Flashcards</h1>
-        <p>Study the citizenship test questions with flashcards</p>
-      </div>
+      <ScrollReveal>
+        <div className="flashcards-header">
+          <h1>Flashcards</h1>
+          <p>Study the citizenship test questions with flashcards</p>
+        </div>
+      </ScrollReveal>
       
-      <div className="filter-group">
-        <h3>Category</h3>
-        <div className="filter-options">
-          <button 
-            className={`filter-option ${categoryFilter === 'all' ? 'active' : ''}`}
-            onClick={() => setCategoryFilter('all')}
-          >
-            All Questions
-          </button>
-          {categories.map(category => (
+      <ScrollReveal stagger={true}>
+        <div className="filter-group">
+          <h3>Category</h3>
+          <div className="filter-options">
             <button 
-              key={category.id}
-              className={`filter-option ${categoryFilter === category.id ? 'active' : ''}`}
-              onClick={() => setCategoryFilter(category.id)}
+              className={`filter-option ${categoryFilter === 'all' ? 'active' : ''}`}
+              onClick={() => setCategoryFilter('all')}
             >
-              {category.name}
+              All Questions
             </button>
-          ))}
-          <button 
-            className={`filter-option ${categoryFilter === 'senior' ? 'active' : ''}`}
-            onClick={() => setCategoryFilter('senior')}
-          >
-            65/20 Special Questions
-          </button>
+            {categories.map(category => (
+              <button 
+                key={category.id}
+                className={`filter-option ${categoryFilter === category.id ? 'active' : ''}`}
+                onClick={() => setCategoryFilter(category.id)}
+              >
+                {category.name}
+              </button>
+            ))}
+            <button 
+              className={`filter-option ${categoryFilter === 'senior' ? 'active' : ''}`}
+              onClick={() => setCategoryFilter('senior')}
+            >
+              65/20 Special Questions
+            </button>
+          </div>
         </div>
-      </div>
+      </ScrollReveal>
       
-      <div className="filter-group">
-        <h3>Options</h3>
-        <div className="filter-options">
-          <button 
-            className={`filter-option ${showSeniorQuestions ? 'active' : ''}`}
-            onClick={() => setShowSeniorQuestions(!showSeniorQuestions)}
-          >
-            Show Only 65/20 Questions
-          </button>
+      <ScrollReveal>
+        <div className="filter-group">
+          <h3>Options</h3>
+          <div className="filter-options">
+            <button 
+              className={`filter-option ${showSeniorQuestions ? 'active' : ''}`}
+              onClick={() => setShowSeniorQuestions(!showSeniorQuestions)}
+            >
+              Show Only 65/20 Questions
+            </button>
+          </div>
         </div>
-      </div>
+      </ScrollReveal>
       
       {questions.length > 0 ? (
         <>
-          <div className="flashcard-container" onClick={handleFlip}>
-            <div className={`flashcard ${isFlipped ? 'flipped' : ''}`}>
-              <div className="flashcard-front">
-                <div className="question-number">Question {questions[currentIndex].id}</div>
-                <div className="question-text">{questions[currentIndex].question}</div>
-                <div className="flashcard-hint">Click to see answer</div>
-              </div>
-              <div className="flashcard-back">
-                <div className="answer-text">
-                  {questions[currentIndex].answer.split('\n').map((line, i) => (
-                    <div key={i}>{line}</div>
-                  ))}
+          <ScrollReveal>
+            <div 
+              className={`flashcard-container ${isCardReady ? 'flashcard-ready' : ''}`} 
+              onClick={handleFlip}
+              ref={flashcardRef}
+            >
+              <div className={`flashcard ${isFlipped ? 'flipped' : ''}`}>
+                <div className="flashcard-front">
+                  <div className="question-number">Question {questions[currentIndex].id}</div>
+                  <div className="question-text">{questions[currentIndex].question}</div>
+                  <div className="flashcard-hint">Click to see answer</div>
                 </div>
-                {questions[currentIndex].is65Plus && (
-                  <div className="senior-badge">65/20 Special Question</div>
-                )}
+                <div className="flashcard-back">
+                  <div className="answer-text">
+                    {questions[currentIndex].answer.split('\n').map((line, i) => (
+                      <div key={i}>{line}</div>
+                    ))}
+                  </div>
+                  {questions[currentIndex].is65Plus && (
+                    <div className="senior-badge">65/20 Special Question</div>
+                  )}
+                </div>
               </div>
             </div>
-          </div>
+            
+            <div className="flashcards-progress">
+              Card {currentIndex + 1} of {questions.length}
+            </div>
+          </ScrollReveal>
           
-          <div className="flashcards-progress">
-            Card {currentIndex + 1} of {questions.length}
-          </div>
-          
-          <div className="flashcards-controls">
-            <button 
-              className="btn secondary"
-              onClick={handlePrevious}
-              disabled={currentIndex === 0}
-            >
-              Previous
-            </button>
-            <button 
-              className="btn primary"
-              onClick={handleFlip}
-            >
-              Flip Card
-            </button>
-            <button 
-              className="btn secondary"
-              onClick={handleNext}
-              disabled={currentIndex === questions.length - 1}
-            >
-              Next
-            </button>
-            <button 
-              className="btn secondary"
-              onClick={handleShuffle}
-            >
-              Shuffle
-            </button>
-          </div>
+          <ScrollReveal>
+            <div className="flashcards-controls">
+              <button 
+                className="btn secondary"
+                onClick={handlePrevious}
+                disabled={currentIndex === 0}
+              >
+                Previous
+              </button>
+              <button 
+                className="btn primary"
+                onClick={handleFlip}
+              >
+                Flip Card
+              </button>
+              <button 
+                className="btn secondary"
+                onClick={handleNext}
+                disabled={currentIndex === questions.length - 1}
+              >
+                Next
+              </button>
+              <button 
+                className="btn secondary"
+                onClick={handleShuffle}
+              >
+                Shuffle
+              </button>
+            </div>
+          </ScrollReveal>
         </>
       ) : (
         <div className="no-questions">
