@@ -25,10 +25,32 @@
   font-weight: 700;
   color: white;
   text-decoration: none;
+  display: flex;
+  align-items: center;
 }
 
 .logo:hover {
   text-decoration: none;
+}
+
+.logo-image {
+  height: 40px;
+  margin-right: var(--spacing-sm);
+}
+
+.logo-text {
+  display: inline-block;
+}
+
+/* Responsive logo adjustments */
+@media (max-width: 576px) {
+  .logo-image {
+    height: 30px;
+  }
+  
+  .logo-text {
+    font-size: var(--font-size-large);
+  }
 }
 
 /* Mobile Menu Button */

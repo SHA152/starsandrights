@@ -17,7 +17,12 @@ const Header = () => {
     <header className="header">
       <div className="container header-container">
         <Link to="/" className="logo">
-          Stars and Rights
+          <img 
+            src="/images/STARS&RIGHTS.svg" 
+            alt="Stars and Rights Logo" 
+            className="logo-image" 
+          />
+          <span className="logo-text">Stars and Rights</span>
         </Link>
         
         {/* Mobile menu button */}
