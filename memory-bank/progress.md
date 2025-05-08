@@ -99,7 +99,7 @@
 - [x] Improve mobile responsiveness with hamburger menu
 - [x] Implement fixed header for better navigation
 - [x] Update content boxes to take full width on desktop screens
-- [x] Apply American flag color scheme (blue: #3C3B6E, red: #B22234, white: #FFFFFF)
+- [x] Apply American flag color scheme (blue: #0A3161, red: #B31942, white: #FFFFFF)
 - [x] Add custom branding (logo, favicon, app icons)
 - [x] Optimize header navigation with dropdown menu
 - [ ] Further optimize for very small screens (< 480px)

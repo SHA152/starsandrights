@@ -28,7 +28,7 @@ We have completed the initial implementation of the BecomeUSCitizen app and have
    - Isolated changeable content (like officials' names) for easy updates
 
 3. **UI Implementation**
-   - Applied an American flag color scheme (blue: #3C3B6E, red: #B22234, white: #FFFFFF)
+   - Applied an American flag color scheme (blue: #0A3161, red: #B31942, white: #FFFFFF)
    - Implemented a card-based UI for questions
    - Created a responsive design for desktop and tablet
    - Added a fixed header that stays at the top when scrolling
@@ -60,7 +60,7 @@ We have completed the initial implementation of the BecomeUSCitizen app and have
   - Implemented a fixed header that stays at the top of the page when scrolling
   - Modified content boxes in Test Structure and N-400 Guide pages to take full width on desktop screens
   - Added ScrollReveal components to Study, English, and About Creator pages for consistent animations
-  - Updated the color scheme to use official American flag colors (blue: #3C3B6E, red: #B22234, white: #FFFFFF)
+  - Updated the color scheme to use official American flag colors (blue: #0A3161, red: #B31942, white: #FFFFFF)
 - Added custom branding:
   - Integrated custom SVG logo in the header alongside the app name
   - Updated favicon with custom design
