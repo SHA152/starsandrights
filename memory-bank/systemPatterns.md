@@ -66,7 +66,14 @@ graph TD
    - Flexible layouts that adapt to different screen sizes
    - Consistent spacing and typography across devices
 
-5. **Animation System Pattern**
+5. **Dropdown Navigation Pattern**
+   - Hierarchical navigation with dropdown menus for related items
+   - Grouping of related navigation items (Study, Flashcards, Practice Test, English Study)
+   - Accessible implementation with proper ARIA attributes
+   - Smooth transitions and animations for dropdown visibility
+   - Consistent behavior across desktop and mobile views
+
+6. **Animation System Pattern**
    - Centralized animation definitions in animations.css
    - Component-specific animation implementations
    - Reusable animation components (PageTransition, ScrollReveal)
