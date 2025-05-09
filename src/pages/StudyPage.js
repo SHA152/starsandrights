@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { categories, getAllSubcategories } from '../data/questionCategories';
 import { getQuestionsByCategory, getQuestionsBySubcategory, getQuestionsFor65Plus, getCommonlyMissedQuestions } from '../data/civicsQuestions';
@@ -13,8 +13,52 @@ const StudyPage = () => {
   const [activeDifficulty, setActiveDifficulty] = useState('all');
   const [showSeniorQuestions, setShowSeniorQuestions] = useState(false);
   const [showCommonlyMissed, setShowCommonlyMissed] = useState(false);
+  const [showEnhancedContent, setShowEnhancedContent] = useState(false);
   
   const subcategories = getAllSubcategories();
+  
+  // Save filter preferences to localStorage
+  useEffect(() => {
+    const savedPreferences = localStorage.getItem('studyPreferences');
+    if (savedPreferences) {
+      const preferences = JSON.parse(savedPreferences);
+      setActiveDifficulty(preferences.difficulty || 'all');
+      setShowSeniorQuestions(preferences.senior || false);
+      setShowCommonlyMissed(preferences.missed || false);
+      setShowEnhancedContent(preferences.enhanced || false);
+    }
+  }, []);
+  
+  // Update localStorage when preferences change
+  useEffect(() => {
+    const preferences = {
+      difficulty: activeDifficulty,
+      senior: showSeniorQuestions,
+      missed: showCommonlyMissed,
+      enhanced: showEnhancedContent
+    };
+    localStorage.setItem('studyPreferences', JSON.stringify(preferences));
+  }, [activeDifficulty, showSeniorQuestions, showCommonlyMissed, showEnhancedContent]);
+  
+  // Build query string for filter parameters
+  const getFilterQueryString = () => {
+    const params = new URLSearchParams();
+    if (activeDifficulty !== 'all') {
+      params.append('difficulty', activeDifficulty);
+    }
+    if (showSeniorQuestions) {
+      params.append('senior', 'true');
+    }
+    if (showCommonlyMissed) {
+      params.append('missed', 'true');
+    }
+    if (showEnhancedContent) {
+      params.append('enhanced', 'true');
+    }
+    
+    const queryString = params.toString();
+    return queryString ? `?${queryString}` : '';
+  };
   
   return (
     <div className="study-page">
@@ -73,6 +117,23 @@ const StudyPage = () => {
             >
               Hard
             </button>
+          </div>
+        </div>
+      </ScrollReveal>
+      
+      <ScrollReveal>
+        <div className="filter-group">
+          <h3>Content Display</h3>
+          <div className="enhanced-content-toggle study-page-toggle">
+            <label className="toggle-switch">
+              <input 
+                type="checkbox" 
+                checked={showEnhancedContent}
+                onChange={() => setShowEnhancedContent(!showEnhancedContent)}
+              />
+              <span className="toggle-slider"></span>
+            </label>
+            <span>Always Show Enhanced Content</span>
           </div>
         </div>
       </ScrollReveal>
@@ -143,13 +204,15 @@ const StudyPage = () => {
                 }
               }
               
+              const queryString = getFilterQueryString();
+              
               return (
                 <div key={category.id} className="category-card">
                   <div className="category-icon">{category.icon}</div>
                   <h3 className="category-title">{category.name}</h3>
                   <p className="category-description">{category.description}</p>
                   <p className="category-count">{questionCount} questions</p>
-                  <Link to={`/study/${category.id}`} className="btn primary">
+                  <Link to={`/study/${category.id}${queryString}`} className="btn primary">
                     Study This Category
                   </Link>
                 </div>
@@ -176,13 +239,15 @@ const StudyPage = () => {
                 questionCount = getQuestionsBySubcategory(subcategory.id).filter(q => q.difficulty === activeDifficulty).length;
               }
               
+              const queryString = getFilterQueryString();
+              
               return (
                 <div key={subcategory.id} className="category-card">
                   <h3 className="category-title">{subcategory.name}</h3>
                   <p className="category-description">{subcategory.description}</p>
                   <p className="category-parent">Part of: {subcategory.parentName}</p>
                   <p className="category-count">{questionCount} questions</p>
-                  <Link to={`/study/${subcategory.id}`} className="btn primary">
+                  <Link to={`/study/${subcategory.id}${queryString}`} className="btn primary">
                     Study This Subcategory
                   </Link>
                 </div>
@@ -202,7 +267,7 @@ const StudyPage = () => {
                 Questions for applicants who are 65 years or older and have been a permanent resident for 20+ years.
               </p>
               <p className="category-count">{getQuestionsFor65Plus().length} questions</p>
-              <Link to="/study/senior" className="btn primary">
+              <Link to={`/study/senior${getFilterQueryString()}`} className="btn primary">
                 Study These Questions
               </Link>
             </div>
@@ -213,7 +278,7 @@ const StudyPage = () => {
                 Questions that applicants frequently answer incorrectly on the citizenship test.
               </p>
               <p className="category-count">{getCommonlyMissedQuestions().length} questions</p>
-              <Link to="/study/missed" className="btn primary">
+              <Link to={`/study/missed${getFilterQueryString()}`} className="btn primary">
                 Study These Questions
               </Link>
             </div>
@@ -232,7 +297,7 @@ const StudyPage = () => {
                   q.question.toLowerCase().includes('governor')
                 ).length} questions
               </p>
-              <Link to="/study/officials" className="btn primary">
+              <Link to={`/study/officials${getFilterQueryString()}`} className="btn primary">
                 Study These Questions
               </Link>
             </div>
