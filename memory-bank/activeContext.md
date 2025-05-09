@@ -81,6 +81,8 @@ We have completed the initial implementation of the BecomeUSCitizen app and have
   - Added global toggle on Study page to set content display preferences
   - Fixed filter persistence between Study and CategoryStudy pages
   - Implemented scroll position management for better navigation
+  - Improved UI with more intuitive "See Why This Matters" button text
+  - Added progress visualization to track viewed questions in each category
 
 ## Testing Results
 

@@ -80,6 +80,8 @@
 - [x] Enhance filtering capabilities
 - [x] Add enhanced content with explanations and memory devices
 - [x] Implement content display preferences
+- [x] Improve UI with more intuitive button text
+- [x] Add progress visualization for viewed questions
 
 ### Flashcard Mode Refinement
 - [ ] Add keyboard navigation

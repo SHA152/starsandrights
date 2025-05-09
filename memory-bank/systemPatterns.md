@@ -190,6 +190,8 @@ graph TD
 4. Add filtering capabilities
 5. Implement enhanced content with explanations and memory devices
 6. Add content display preferences with toggle switches
+7. Implement progress visualization for tracking viewed questions
+8. Use localStorage for persisting user progress between sessions
 
 ### Flashcard Implementation
 
