@@ -103,6 +103,7 @@ graph TD
    - Questions and answers stored as static JavaScript objects/arrays
    - Organized by categories and attributes
    - Clear separation of static and dynamic content
+   - Enhanced content with explanations and memory devices
 
 2. **Data Transformation Layer**
    - Utility functions to filter, sort, and transform data
@@ -187,6 +188,8 @@ graph TD
 2. Implement category listing component
 3. Develop question listing by category
 4. Add filtering capabilities
+5. Implement enhanced content with explanations and memory devices
+6. Add content display preferences with toggle switches
 
 ### Flashcard Implementation
 

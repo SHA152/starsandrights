@@ -75,9 +75,11 @@
 ## What's Left to Build
 
 ### Study Mode Refinement
-- [ ] Implement individual category pages
-- [ ] Add question detail view
-- [ ] Enhance filtering capabilities
+- [x] Implement individual category pages
+- [x] Add question detail view
+- [x] Enhance filtering capabilities
+- [x] Add enhanced content with explanations and memory devices
+- [x] Implement content display preferences
 
 ### Flashcard Mode Refinement
 - [ ] Add keyboard navigation

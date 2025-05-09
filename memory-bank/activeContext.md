@@ -73,6 +73,14 @@ We have completed the initial implementation of the BecomeUSCitizen app and have
   - Shortened "About the Creator" to "About" for better space utilization
   - Increased logo size to match header height
   - Added proper dropdown styling with transitions and animations
+- Enhanced question content and study experience:
+  - Added enhanced content for all 100 citizenship test questions
+  - Implemented "Why It Matters" explanations for each question
+  - Added memory devices to help with retention
+  - Created toggle switches for showing/hiding enhanced content
+  - Added global toggle on Study page to set content display preferences
+  - Fixed filter persistence between Study and CategoryStudy pages
+  - Implemented scroll position management for better navigation
 
 ## Testing Results
 
