@@ -413,6 +413,27 @@
   font-weight: bold;
 }
 
+.progress-container {
+  margin: var(--spacing-md) 0;
+  background-color: var(--color-secondary-light);
+  border-radius: var(--border-radius-sm);
+  height: 8px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: var(--color-primary);
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  font-size: var(--font-size-small);
+  color: var(--color-primary);
+  margin-top: var(--spacing-xs);
+  text-align: right;
+}
+
 .enhanced-content-toggle {
   display: flex;
   align-items: center;

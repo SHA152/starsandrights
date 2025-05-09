@@ -23,6 +23,7 @@ const CategoryStudyPage = () => {
   const [categoryDescription, setCategoryDescription] = useState('');
   const [showEnhancedContent, setShowEnhancedContent] = useState(false);
   const [expandedQuestions, setExpandedQuestions] = useState({});
+  const [viewedQuestions, setViewedQuestions] = useState(new Set());
   const pageRef = useRef(null);
   
   // Parse query parameters for filters
@@ -37,6 +38,29 @@ const CategoryStudyPage = () => {
       pageRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   }, [categoryId]);
+  
+  // Load viewed questions from localStorage
+  useEffect(() => {
+    const storageKey = `citizenship_viewed_questions_${categoryId}`;
+    const savedViewedQuestions = localStorage.getItem(storageKey);
+    
+    if (savedViewedQuestions) {
+      try {
+        const parsedViewedQuestions = JSON.parse(savedViewedQuestions);
+        setViewedQuestions(new Set(parsedViewedQuestions));
+      } catch (error) {
+        console.error('Error parsing viewed questions from localStorage:', error);
+      }
+    }
+  }, [categoryId]);
+  
+  // Save viewed questions to localStorage when they change
+  useEffect(() => {
+    if (viewedQuestions.size > 0) {
+      const storageKey = `citizenship_viewed_questions_${categoryId}`;
+      localStorage.setItem(storageKey, JSON.stringify([...viewedQuestions]));
+    }
+  }, [viewedQuestions, categoryId]);
   
   useEffect(() => {
     let fetchedQuestions = [];
@@ -104,14 +128,19 @@ const CategoryStudyPage = () => {
   const toggleEnhancedContent = () => {
     setShowEnhancedContent(!showEnhancedContent);
     
-    // If turning on enhanced content, expand all questions
+    // If turning on enhanced content, expand all questions and mark all as viewed
     // If turning off, collapse all questions
     if (!showEnhancedContent) {
       const newExpandedState = {};
+      const newViewedQuestions = new Set(viewedQuestions);
+      
       questions.forEach(q => {
         newExpandedState[q.id] = true;
+        newViewedQuestions.add(q.id);
       });
+      
       setExpandedQuestions(newExpandedState);
+      setViewedQuestions(newViewedQuestions);
     } else {
       setExpandedQuestions({});
     }
@@ -119,11 +148,23 @@ const CategoryStudyPage = () => {
   
   // Toggle expanded state for a specific question
   const toggleQuestion = (questionId) => {
+    // Mark question as viewed when expanded
+    if (!viewedQuestions.has(questionId)) {
+      const newViewedQuestions = new Set(viewedQuestions);
+      newViewedQuestions.add(questionId);
+      setViewedQuestions(newViewedQuestions);
+    }
+    
     setExpandedQuestions(prev => ({
       ...prev,
       [questionId]: !prev[questionId]
     }));
   };
+  
+  // Calculate progress percentage
+  const progressPercentage = questions.length > 0 
+    ? Math.round((viewedQuestions.size / questions.length) * 100) 
+    : 0;
   
   return (
     <div className="category-study-page" ref={pageRef}>
@@ -136,6 +177,17 @@ const CategoryStudyPage = () => {
           <p>{categoryDescription}</p>
           <p className="question-count">{questions.length} questions</p>
           
+          {/* Progress Bar */}
+          <div className="progress-container">
+            <div 
+              className="progress-bar" 
+              style={{ width: `${progressPercentage}%` }}
+            ></div>
+          </div>
+          <p className="progress-text">
+            {viewedQuestions.size}/{questions.length} questions viewed ({progressPercentage}%)
+          </p>
+          
           <div className="enhanced-content-toggle">
             <label className="toggle-switch">
               <input 
@@ -145,7 +197,7 @@ const CategoryStudyPage = () => {
               />
               <span className="toggle-slider"></span>
             </label>
-            <span>Show Enhanced Content</span>
+            <span>See Why This Matters</span>
           </div>
         </div>
       </ScrollReveal>
@@ -195,7 +247,7 @@ const CategoryStudyPage = () => {
                         className="toggle-enhanced-btn"
                         onClick={() => toggleQuestion(question.id)}
                       >
-                        {isExpanded ? 'Hide Enhanced Content' : 'Show Enhanced Content'}
+                        {isExpanded ? 'Hide Why This Matters' : 'See Why This Matters'}
                       </button>
                     )}
                   </div>

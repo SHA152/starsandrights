@@ -133,7 +133,7 @@ const StudyPage = () => {
               />
               <span className="toggle-slider"></span>
             </label>
-            <span>Always Show Enhanced Content</span>
+            <span>Always Show Why This Matters</span>
           </div>
         </div>
       </ScrollReveal>
