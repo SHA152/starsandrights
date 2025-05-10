@@ -106,7 +106,11 @@
 - [x] Apply American flag color scheme (blue: #0A3161, red: #B31942, white: #FFFFFF)
 - [x] Add custom branding (logo, favicon, app icons)
 - [x] Optimize header navigation with dropdown menu
-- [ ] Further optimize for very small screens (< 480px)
+- [x] Optimize for very small screens (< 480px)
+  - [x] Replace text badges with compact icons
+  - [x] Fix answer box sizing issues
+  - [x] Replace horizontal filter boxes with dropdowns
+  - [x] Streamline English page header
 - [ ] Add dark mode (future enhancement)
 
 ## Known Issues

@@ -65,6 +65,11 @@ graph TD
    - Fixed header that stays at the top when scrolling
    - Flexible layouts that adapt to different screen sizes
    - Consistent spacing and typography across devices
+   - Space-efficient UI elements for small screens:
+     - Icon-based badges instead of text labels
+     - Dropdowns instead of horizontal button groups
+     - Merged UI elements to reduce vertical space
+     - Proper text wrapping for long content
 
 5. **Dropdown Navigation Pattern**
    - Hierarchical navigation with dropdown menus for related items
