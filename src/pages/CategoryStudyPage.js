@@ -212,12 +212,18 @@ const CategoryStudyPage = () => {
               <div className="question-card">
                 <div className="question-header">
                   <div className="question-number">Question {question.id}</div>
-                  {question.is65Plus && (
-                    <div className="question-badge">65/20 Special Question</div>
-                  )}
-                  {question.commonlyMissed && (
-                    <div className="question-badge commonly-missed">Commonly Missed</div>
-                  )}
+                  <div className="question-badges">
+                    {question.is65Plus && (
+                      <div className="question-badge-icon senior-icon" title="65/20 Special Question">
+                        👵
+                      </div>
+                    )}
+                    {question.commonlyMissed && (
+                      <div className="question-badge-icon missed-icon" title="Commonly Missed">
+                        🎯
+                      </div>
+                    )}
+                  </div>
                 </div>
                 <div className="question-text">{question.question}</div>
                 <div className="answer-text">

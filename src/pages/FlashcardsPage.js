@@ -92,28 +92,20 @@ const FlashcardsPage = () => {
       <ScrollReveal stagger={true}>
         <div className="filter-group">
           <h3>Category</h3>
-          <div className="filter-options">
-            <button 
-              className={`filter-option ${categoryFilter === 'all' ? 'active' : ''}`}
-              onClick={() => setCategoryFilter('all')}
+          <div className="filter-dropdown-container">
+            <select 
+              className="filter-dropdown"
+              value={categoryFilter}
+              onChange={(e) => setCategoryFilter(e.target.value)}
             >
-              All Questions
-            </button>
-            {categories.map(category => (
-              <button 
-                key={category.id}
-                className={`filter-option ${categoryFilter === category.id ? 'active' : ''}`}
-                onClick={() => setCategoryFilter(category.id)}
-              >
-                {category.name}
-              </button>
-            ))}
-            <button 
-              className={`filter-option ${categoryFilter === 'senior' ? 'active' : ''}`}
-              onClick={() => setCategoryFilter('senior')}
-            >
-              65/20 Special Questions
-            </button>
+              <option value="all">All Questions</option>
+              {categories.map(category => (
+                <option key={category.id} value={category.id}>
+                  {category.name}
+                </option>
+              ))}
+              <option value="senior">65/20 Special Questions</option>
+            </select>
           </div>
         </div>
       </ScrollReveal>
@@ -121,13 +113,16 @@ const FlashcardsPage = () => {
       <ScrollReveal>
         <div className="filter-group">
           <h3>Options</h3>
-          <div className="filter-options">
-            <button 
-              className={`filter-option ${showSeniorQuestions ? 'active' : ''}`}
-              onClick={() => setShowSeniorQuestions(!showSeniorQuestions)}
-            >
-              Show Only 65/20 Questions
-            </button>
+          <div className="enhanced-content-toggle">
+            <label className="toggle-switch">
+              <input 
+                type="checkbox" 
+                checked={showSeniorQuestions}
+                onChange={() => setShowSeniorQuestions(!showSeniorQuestions)}
+              />
+              <span className="toggle-slider"></span>
+            </label>
+            <span>Show Only 65/20 Questions</span>
           </div>
         </div>
       </ScrollReveal>

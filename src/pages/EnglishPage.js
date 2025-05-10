@@ -58,29 +58,25 @@ const EnglishPage = () => {
       <ScrollReveal>
         <div className="english-header">
           <h1>English Study</h1>
-          <p>Study the English reading and writing materials for the citizenship test</p>
-        </div>
-      </ScrollReveal>
-      
-      <ScrollReveal>
-        <div className="english-tabs">
-          <div 
-            className={`english-tab ${activeTab === 'reading' ? 'active' : ''}`}
-            onClick={() => {
-              setActiveTab('reading');
-              setActiveCategory('all');
-            }}
-          >
-            Reading
-          </div>
-          <div 
-            className={`english-tab ${activeTab === 'writing' ? 'active' : ''}`}
-            onClick={() => {
-              setActiveTab('writing');
-              setActiveCategory('all');
-            }}
-          >
-            Writing
+          <div className="english-tabs">
+            <div 
+              className={`english-tab ${activeTab === 'reading' ? 'active' : ''}`}
+              onClick={() => {
+                setActiveTab('reading');
+                setActiveCategory('all');
+              }}
+            >
+              Reading
+            </div>
+            <div 
+              className={`english-tab ${activeTab === 'writing' ? 'active' : ''}`}
+              onClick={() => {
+                setActiveTab('writing');
+                setActiveCategory('all');
+              }}
+            >
+              Writing
+            </div>
           </div>
         </div>
       </ScrollReveal>
