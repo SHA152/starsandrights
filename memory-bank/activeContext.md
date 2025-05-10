@@ -88,6 +88,8 @@ We have completed the initial implementation of the BecomeUSCitizen app and have
     - Fixed answer box sizing issues with proper word wrapping
     - Replaced horizontal filter boxes with space-efficient dropdowns
     - Streamlined English page header by merging redundant elements
+    - Added scrolling to flashcards to handle long content
+    - Simplified English page section headers for clarity
 
 ## Testing Results
 
