@@ -84,7 +84,7 @@ const EnglishPage = () => {
       <div className="english-content">
         <ScrollReveal>
           <div className="english-section">
-            <h2>Tips for the English {activeTab === 'reading' ? 'Reading' : 'Writing'} Test</h2>
+            <h2>English {activeTab === 'reading' ? 'Reading' : 'Writing'} Test</h2>
             {activeTab === 'reading' ? (
               <div className="tips-content">
                 <p>During the reading test, you will be asked to read one sentence out of three sentences. You need to read just one sentence correctly to demonstrate your ability to read English.</p>

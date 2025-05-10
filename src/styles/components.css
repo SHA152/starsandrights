@@ -312,6 +312,7 @@
   padding: var(--spacing-lg);
   border-radius: var(--border-radius-lg);
   box-shadow: var(--shadow-md);
+  overflow-y: auto;
 }
 
 .flashcard-front {
